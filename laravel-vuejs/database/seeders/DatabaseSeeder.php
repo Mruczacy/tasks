@@ -2,21 +2,17 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Client;
+use App\Models\Order;
+use App\Models\Worker;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
-
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        $worker = Worker::factory(1)->create();
+        $client = Client::factory(1)->create(['worker_id' => Worker::find(1)->id]);
+        $order = Order::factory(5)->create(['client_id' => Client::find(1)->id]);
     }
 }
