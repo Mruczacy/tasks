@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphToMany;
+use Illuminate\Support\Collection;
 
 class Client extends Model
 {
@@ -35,6 +36,6 @@ class Client extends Model
 
     public function clientInterview(): Client
     {
-        return Client::with('worker', 'orders')->find($this->id);
+        return $this->with('worker', 'orders')->get()[0];
     }
 }
