@@ -43,5 +43,4 @@ class Client extends Model
     {
         return $this->morphToMany(Car::class, 'carrable');
     }
-
 }
