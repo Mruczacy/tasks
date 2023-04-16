@@ -12,7 +12,7 @@ class DashboardController extends Controller
 {
     public function __invoke()
     {
-        return Inertia::render('Dashboard', [
+        return Inertia::render('Task1', [
             'client' => Client::with('worker', 'orders')->find(1)
         ]);
     }
