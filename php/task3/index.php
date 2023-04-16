@@ -17,7 +17,7 @@ class RankingTable
         }
     }
 
-    public function recordResult($playerName, $score)
+    public function recordResult($playerName, $score): void
     {
         if (isset($this->players[$playerName])) {
             $this->players[$playerName]['score'] += $score;
@@ -25,7 +25,7 @@ class RankingTable
         }
     }
 
-    public function playerRank($rank)
+    public function playerRank($rank): string
     {
         uasort($this->players, function ($a, $b) {
             if ($a['score'] === $b['score']) {
@@ -43,9 +43,9 @@ class RankingTable
         $rank--;
 
         if ($rank >= 0 && $rank < count($rankedPlayers)) {
-            echo array_search($rankedPlayers[$rank], $this->players);
+            return array_search($rankedPlayers[$rank], $this->players);
         } else {
-            echo null;
+            return null;
         }
     }
 }
@@ -56,4 +56,4 @@ $table->recordResult('Jan', 2);
 $table->recordResult('Maks', 3);
 $table->recordResult('Monika', 5);
 
-$table->playerRank(1);
+echo $table->playerRank(1);
