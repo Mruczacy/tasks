@@ -26,4 +26,9 @@ class Worker extends Model
     {
         return $this->hasManyThrough(Order::class, Client::class);
     }
+
+    public function cars(): MorphToMany
+    {
+        return $this->morphToMany(Car::class, 'carable');
+    }
 }
