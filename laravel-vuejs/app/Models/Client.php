@@ -38,4 +38,10 @@ class Client extends Model
     {
         return $this->with('worker', 'orders')->get()[0];
     }
+
+    public function cars(): MorphToMany
+    {
+        return $this->morphToMany(Car::class, 'carrable');
+    }
+
 }
